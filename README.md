@@ -52,3 +52,9 @@ Adicione a biblioteca em requirements.txt e execute:
 ```
 pip install -r requirements.txt
 ```
+
+## Criando novo App
+
+```
+python manage.py startapp <app_name>
+```
