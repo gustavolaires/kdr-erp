@@ -55,12 +55,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'kdr.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'kdr' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'kdr.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -126,7 +126,7 @@ STATIC_URL = 'static/'
 # STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'kdr' / 'static'
 ]
 
 # Default primary key field type
