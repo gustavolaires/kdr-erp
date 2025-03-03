@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product Create</title>
-    </head>
-    <body>
-        <h1>Create Product</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Criar Produto</title>
+{% endblock %}
+
+{% block content %}
+    <h2>Criar Produto</h2>
+
+    <div class="py-2">
         <form method="post">{% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Save">
         </form>
-        <p>
-            <a href="{% url 'product-list' %}">Voltar</a>
-        </p>
-    </body>
-</html>
+    </div>
+
+    <div class="d-inline-block px-3 py-2 mb-2 my-class">
+        <a href="{% url 'product-list' %}">Voltar</a>
+    </div>
+{% endblock %}

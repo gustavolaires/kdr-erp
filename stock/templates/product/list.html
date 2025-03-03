@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Products List</title>
-    </head>
-    <body>
-        <h1>Products List</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/list.css' %}">
+    <title>Lista de produtos</title>
+{% endblock %}
+
+{% block content %}
+    <h2>Lista de Produtos</h2>
+
+    <div class="d-inline-block px-3 py-2 mb-2 my-class">
+        <a href="{% url 'product-create' %}">Criar novo produto</a>
+    </div>
+
+    <div class="py-2">
         <ul>
             {% for product in object_list %}
                 <li>
@@ -19,9 +26,5 @@
                 <li>No products yet.</li>
             {% endfor %}
         </ul>
-        <br/>
-        <p>
-            <a href="{% url 'product-create' %}">Criar produto</a>
-        </p>
-    </body>
-</html>
+    </div>
+{% endblock %}

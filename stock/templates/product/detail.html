@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product Detail</title>
-    </head>
-    <body>
-        <h1>Product Detail</h1>
-        <h2>{{ object.name }}</h2>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Detalhes do produto</title>
+{% endblock %}
+
+{% block content %}
+    <h2>Detalhes do produto</h2>
+
+    <div class="py-2">
+        <h4>{{ object.name }}</h4>
         <p>Codigo de barras: {{ object.bar_code }}</p>
         <p>Codigo do fabricante: {{ object.manufacturer_reference }}</p>
         <p>Quantidade: {{ object.amount }}</p>
         <p>Descrição: {{ object.description }}</p>
-        <p>
-            <a href="{% url 'product-list' %}">Voltar</a>
-        </p>
-    </body>
-</html>
+    </div>
+
+    <div class="d-inline-block px-3 py-2 mb-2 my-class">
+        <a href="{% url 'product-list' %}">Voltar</a>
+    </div>
+{% endblock %}

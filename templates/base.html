@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fa/css/all.min.css' %}">
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+
+    {% block head %}
+    <title>Page Title</title>
+    {% endblock %}
+</head>
+
+<body class="d-flex flex-row min-vh-100">
+    <aside class="d-none d-sm-inline-block sidebar">
+        <nav class="navbar d-flex flex-column align-items-stretch">
+            <div class="px-3 py-2 text-center">
+                <h5>Kasa dos reparos</h5>
+            </div>
+
+            <ul class="navbar-nav mt-5">
+                <li class="nav-item">
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <span class="d-inline-block me-1" style="width: 25px;">
+                            <i class="fa-solid fa-house fa-lg"></i>
+                        </span>
+                        <span class="text-nowrap">Página Inicial</span>
+                    </a>
+                </li>
+
+                <li class="nav-item mt-5">
+                    <h6 class="d-block w-100 px-3">Menu</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <span class="d-inline-block me-1" style="width: 25px;">
+                            <i class="fa-solid fa-chart-line fa-lg"></i>
+                        </span>
+                        <span class="text-nowrap">Dashboards</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <span class="d-inline-block me-1" style="width: 25px;">
+                            <i class="fa-solid fa-boxes-stacked fa-lg"></i>
+                        </span>
+                        <span class="text-nowrap">Produtos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <span class="d-inline-block me-1" style="width: 25px;">
+                            <i class="fa-solid fa-circle-dollar-to-slot fa-lg"></i>
+                        </span>
+                        <span class="text-nowrap">Vendas</span>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </aside>
+
+    <section class="w-100">
+        <header class="d-flex flex-row justify-content-between">
+            <ul class="d-flex flex-row">
+                <li>
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <i class="fa-solid fa-bars fa-xl"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="d-flex flex-row">
+                <li>
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <i class="fa-solid fa-bell fa-xl"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-block w-100 px-3 py-3" href="#">
+                        <i class="fa-solid fa-gear fa-xl"></i>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        <main class="px-3 py-2">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </section>
+
+</body>
+
+</html>
