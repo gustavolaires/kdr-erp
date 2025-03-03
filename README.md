@@ -58,3 +58,9 @@ pip install -r requirements.txt
 ```
 python manage.py startapp <app_name>
 ```
+
+## Executando projeto como Desktop App
+
+```
+python gui.py
+```
