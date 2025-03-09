@@ -64,3 +64,10 @@ python manage.py startapp <app_name>
 ```
 python gui.py
 ```
+
+## Criando um batch file (.bat) para executar o projeto
+
+```
+@echo off
+cmd /k "cd /d C:\<project_path>\venv\scripts & activate & cd /d C:\<project_path> & python gui.py & exit"
+```
