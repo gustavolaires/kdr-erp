@@ -71,3 +71,27 @@ python gui.py
 @echo off
 cmd /k "cd /d C:\<project_path>\venv\scripts & activate & cd /d C:\<project_path> & python gui.py & exit"
 ```
+
+## Criando o executável do projeto
+
+1. Crie o executável do projeto:
+
+    ```
+    pyinstaller --add-data "core;core" --add-data "kdr;kdr" --add-data "stock;stock" --add-data "manage.py;." --collect-all waitress --collect-all whitenoise gui.py
+    ```
+
+2. Adicione os arquivos .env e db.sqlite3 dentro da pasta:
+    ```
+    <project_path>\dist\<app_name>\_internal
+    ```
+
+
+**OBS 1: Caso exista o arquivo .spec, execute:**
+```
+pyinstaller gui.spec
+```
+
+**OBS 2: Opções adicionais para criar executável único:**
+```
+pyinstaller --onefile --windowed gui.spec
+```
