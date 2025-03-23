@@ -1,6 +1,21 @@
+:root {
+    --blue900: #202B46;
+    --blue300: #7198fa;
+    --neutral900: #0f0f0f;
+    --neutral700: #262626;
+    --neutral600: #525252;
+    --neutral500: #737373;
+    --neutral200: #E5E5E5;
+    --neutral100: #F0F0F0;
+    --neutral50: #F9F9F9;
+    --neutral: #FFF;
+
+    --breadcrumb-item: #212529bf;
+}
+
 a {
     text-decoration: none;
-    color: #0f0f0f;
+    color: var(--neutral900);
 }
 
 ul, ol {
@@ -10,42 +25,83 @@ ul, ol {
 }
 
 body header {
-    background-color: #fefefe;
+    background-color: var(--neutral);
 }
 
 body header a:hover {
-    background-color: #7198fa;
-    color: #202B46;
+    background-color: var(--blue300);
+    color: var(--blue900);
 }
 
 body section {
-    margin-left: 190px;
-    background-color: #F1F1F1;
+    background-color: var(--neutral100);
 }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    overflow-x: hidden;
+.aside-navbar {
+    position: sticky;
     width: 190px;
     height: 100%;
-    background-color: #202B46;
-    color: #FFFFFF;
+    background-color: var(--blue900);
+    color: var(--neutral);
 }
 
 .nav-item a {
-    color: #FFFFFF;
+    color: var(--neutral);
 }
 
 .nav-item a:hover {
-    background-color: #7198fa;
-    color: #202B46;
+    background-color: var(--blue300);
+    color: var(--blue900);
 }
 
-@media (max-width: 576px) {
+.breadcrumb-item a {
+    color: var(--breadcrumb-item);
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.hover-item:hover {
+    background-color: var(--blue300);
+    color: var(--blue900);
+}
+
+.kdr-table-header {
+    background-color: var(--blue900);
+    color: var(--neutral);
+}
+
+.kdr-table .kdr-table-lg-striped {
+    border-radius: 0.375em;
+}
+
+.kdr-table .kdr-table-lg-striped:nth-child(even) {
+    background-color: var(--neutral100);
+}
+
+.kdr-table .kdr-table-lg-striped:nth-child(even):hover {
+    background-color: var(--blue300);
+    color: var(--blue900);
+}
+
+@media (max-width: 991px) {
     body section{
         margin-left: 0px;
+    }
+}
+
+@media (max-width: 991px) {
+    .kdr-table .kdr-table-item-slot:not(:last-child) {
+        border-bottom: 1px solid var(--neutral500);
+    }
+
+    .kdr-table .kdr-table-lg-striped:nth-child(even) {
+        background-color: var(--neutral50);
+    }
+
+    .kdr-table .kdr-table-lg-striped:nth-child(even):hover {
+        background-color: var(--blue300);
+        color: var(--blue900);
     }
 }

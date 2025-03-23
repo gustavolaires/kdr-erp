@@ -7,24 +7,79 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Lista de Produtos</h2>
-
-    <div class="d-inline-block px-3 py-2 mb-2 my-class">
-        <a href="{% url 'product-create' %}">Criar novo produto</a>
+    <!-- title -->
+    <h3>Produtos</h3>
+    
+    <!-- breadcrumb -->
+    <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Produtos</li>
+        </ol>
     </div>
 
+    <!-- actions button -->
     <div class="py-2">
-        <ul>
+        <div class="d-flex justify-content-end">
+            <a class="d-block-inline btn btn-success rounded-2 px-2 py-2" href="{% url 'product-create' %}">
+                <span>
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span class="text-nowrap">Novo produto</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- main data -->
+    <div class="kdr-table rounded-2 px-2 py-2" style="background-color: var(--neutral50);">
+        <div class="d-none d-lg-flex text-center rounded-2 kdr-table-header">
+            <span class="d-inline-block px-2 py-2" style="min-width: 120px;">Cd. Barra</span>
+            <span class="d-inline-block flex-grow-1 px-2 py-2">Produto</span>
+            <span class="d-inline-block px-2 py-2" style="min-width: 140px;">Quantidade</span>
+            <span class="d-inline-block px-2 py-2" style="min-width: 220px;">Preço</span>
+            <span class="d-inline-block px-2 py-2" style="min-width: 142px;">Ações</span>
+        </div>
+    
+        <div class="d-flex flex-column">
             {% for product in object_list %}
-                <li>
-                    {{ product.bar_code }} - {{ product.name }} - 
-                    <a href="{% url 'product-detail' product.id %}">Detalhes</a> | 
-                    <a href="{% url 'product-update' product.id %}">Atualizar</a> | 
-                    <a href="{% url 'product-delete' product.id %}">Deletar</a>
-                </li>
+                <div class="kdr-table-item-slot">
+                    <div class="d-flex flex-row kdr-table-lg-striped hover-item py-1">
+                        <div class="d-flex flex-column flex-lg-row flex-wrap flex-grow-1">
+                            <div class="d-flex flex-row flex-nowrap flex-grow-1">
+                                <span class="d-inline-block px-2 py-2" style="min-width: 120px;">{{ product.bar_code }}</span>
+                                <span class="d-inline-block flex-grow-1 px-2 py-2" style=" min-width: 132px;">{{ product.name }}</span>
+                            </div>
+                            <div class="d-flex flex-row flex-nowrap flex-grow-1 flex-lg-grow-0 justify-content-between">
+                                <span class="d-inline-block text-lg-center px-2 py-2" style="min-width: 140px;">{{ product.amount }} unidades</span>
+                                <span class="d-inline-block text-center px-2 py-2" style="min-width: 220px;">R$ {{ product.unit_price }} / unidade</span>
+                            </div>
+                        </div>
+                        <div class="d-inline-block">
+                            <div class="d-flex flex-row align-items-center gap-2 h-100">
+                                <a href="{% url 'product-detail' product.id %}" class="btn btn-primary rounded-2 px-2 py-2">
+                                    <span class="d-inline-block text-center" style="width: 24px;">
+                                        <i class="fa-solid fa-file-lines"></i>
+                                    </span>
+                                </a>
+                                <a href="{% url 'product-update' product.id %}" class="btn btn-warning rounded-2 px-2 py-2">
+                                    <span class="d-inline-block text-center" style="width: 24px;">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </span>
+                                </a>
+                                <a href="{% url 'product-delete' product.id %}" class="btn btn-danger rounded-2 px-2 py-2">
+                                    <span class="d-inline-block text-center" style="width: 24px;">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% empty %}
-                <li>No products yet.</li>
+                <div>
+                     Não há produtos cadastrados.
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 {% endblock %}

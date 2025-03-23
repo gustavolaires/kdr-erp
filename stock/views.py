@@ -1,28 +1,29 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views import generic
 from stock.models import Product
+from stock.forms import ProductForm
 
-class ProductListView(ListView):
+class ProductListView(generic.ListView):
     model = Product
     template_name = "product/list.html"
 
-class ProductDetailView(DetailView):
+class ProductDetailView(generic.DetailView):
     model = Product
     template_name = "product/detail.html"
 
-class ProductCreateView(CreateView):
+class ProductCreateView(generic.CreateView):
     model = Product
-    fields = ["name", "description", "bar_code", "amount", "manufacturer_reference"]
+    form_class = ProductForm
     template_name = "product/create.html"
     success_url = reverse_lazy("product-list")
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(generic.UpdateView):
     model = Product
-    fields = ["name", "description", "bar_code", "amount", "manufacturer_reference"]
+    form_class = ProductForm
     template_name = "product/update.html"
     success_url = reverse_lazy("product-list")
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(generic.DeleteView):
     model = Product
     template_name = "product/delete.html"
     success_url = reverse_lazy("product-list")
