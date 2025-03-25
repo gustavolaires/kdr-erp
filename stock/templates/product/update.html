@@ -2,20 +2,101 @@
 {% load static %}
 
 {% block head %}
-    <title>Atualizar Produto</title>
+    <title>Editar Produto</title>
 {% endblock %}
 
 {% block content %}
-    <h2>Atualizar Produto</h2>
+    <!-- title -->
+    <h3>Editar Produto</h3>
 
-    <div class="py-2">
-        <form method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Update">
+    <!-- breadcrumb -->
+    <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb text-nowrap">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product-list' %}">Produtos</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product-detail' object.id %}">{{ object.bar_code }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editar</li>
+        </ol>
+    </div>
+
+    <!-- main data -->
+    <div class="border rounded-2 p-3" style="background-color: var(--neutral50);">
+        <form method="post" id="update-product">
+            {% csrf_token %}  
+
+            <div class="row g-3">
+                <div class="col-lg-3">
+                    {{ form.bar_code.errors }}
+                    <label for="{{ form.bar_code.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.bar_code.label }}{% if form.bar_code.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.bar_code }}
+                </div>
+                <div class="col-lg-9">
+                    {{ form.name.errors }}
+                    <label for="{{ form.name.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.name.label }}{% if form.name.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.name }}
+                </div>
+
+                <div class="col-lg-6">
+                    {{ form.manufacturer.errors }}
+                    <label for="{{ form.manufacturer.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.manufacturer.label }}{% if form.manufacturer.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.manufacturer }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form.manufacturer_code.errors }}
+                    <label for="{{ form.manufacturer_code.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.manufacturer_code.label }}{% if form.manufacturer_code.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.manufacturer_code }}
+                </div>
+
+                <div class="col-lg-4">
+                    {{ form.unit_type.errors }}
+                    <label for="{{ form.unit_type.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.unit_type.label }}{% if form.unit_type.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.unit_type }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form.amount.errors }}
+                    <label for="{{ form.amount.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.amount.label }}{% if form.amount.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.amount }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form.unit_price.errors }}
+                    <label for="{{ form.unit_price.id_for_label }}" class="form-label text-nowrap">
+                        {{ form.unit_price.label }}{% if form.unit_price.field.required %}<span class="field-required">*</span>{% endif %}
+                    </label>
+                    {{ form.unit_price }}
+                </div>
+            </div>
         </form>
+
+        <!-- form action buttons -->
+        <div class="mt-3">
+            <div class="d-flex justify-content-end gap-2">
+                <a class="d-block-inline btn btn-secondary rounded-2 py-2" role="button" href="{% url 'product-list' %}">
+                    <span>
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                    <span class="text-nowrap">Cancelar</span>
+                </a>
+                <button type="submit" form="update-product" class="btn btn-warning rounded-2 py-2">
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                    <span class="text-nowrap">Atualizar</span>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="d-inline-block px-3 py-2 mb-2 my-class">
-        <a href="{% url 'product-list' %}">Voltar</a>
-    </div>
+    
 {% endblock %}

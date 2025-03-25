@@ -1,6 +1,7 @@
 :root {
     --blue900: #202B46;
     --blue300: #7198fa;
+    --red600: #E7000B;
     --neutral900: #0f0f0f;
     --neutral700: #262626;
     --neutral600: #525252;
@@ -62,6 +63,11 @@ body section {
     text-decoration: underline;
 }
 
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
 .hover-item:hover {
     background-color: var(--blue300);
     color: var(--blue900);
@@ -72,17 +78,21 @@ body section {
     color: var(--neutral);
 }
 
-.kdr-table .kdr-table-lg-striped {
+.kdr-table-lg-striped {
     border-radius: 0.375em;
 }
 
-.kdr-table .kdr-table-lg-striped:nth-child(even) {
-    background-color: var(--neutral100);
+.kdr-table-item-slot:nth-child(even) .kdr-table-lg-striped {
+    background-color: var(--neutral200);
 }
 
-.kdr-table .kdr-table-lg-striped:nth-child(even):hover {
+.kdr-table-item-slot:nth-child(even) .kdr-table-lg-striped:hover {
     background-color: var(--blue300);
     color: var(--blue900);
+}
+
+.field-required {
+    color: var(--red600)
 }
 
 @media (max-width: 991px) {
@@ -92,15 +102,15 @@ body section {
 }
 
 @media (max-width: 991px) {
-    .kdr-table .kdr-table-item-slot:not(:last-child) {
+    .kdr-table-item-slot:not(:last-child) {
         border-bottom: 1px solid var(--neutral500);
     }
 
-    .kdr-table .kdr-table-lg-striped:nth-child(even) {
+    .kdr-table-item-slot:nth-child(even) .kdr-table-lg-striped {
         background-color: var(--neutral50);
     }
 
-    .kdr-table .kdr-table-lg-striped:nth-child(even):hover {
+    .kdr-table-item-slot:nth-child(even) .kdr-table-lg-striped:hover {
         background-color: var(--blue300);
         color: var(--blue900);
     }
