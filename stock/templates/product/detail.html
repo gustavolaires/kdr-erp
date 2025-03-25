@@ -6,17 +6,79 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Detalhes do produto</h2>
+    <!-- title -->
+    <h3>Detalhes do produto</h3>
 
-    <div class="py-2">
-        <h4>{{ object.name }}</h4>
-        <p>Codigo de barras: {{ object.bar_code }}</p>
-        <p>Codigo do fabricante: {{ object.manufacturer_reference }}</p>
-        <p>Quantidade: {{ object.amount }}</p>
-        <p>Descrição: {{ object.description }}</p>
+    <!-- breadcrumb -->
+    <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb text-nowrap">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product-list' %}">Produtos</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{% url 'product-detail' object.id %}">{{ object.bar_code }}</a></li>
+        </ol>
     </div>
 
-    <div class="d-inline-block px-3 py-2 mb-2 my-class">
-        <a href="{% url 'product-list' %}">Voltar</a>
+    <!-- actions button -->
+    <div class="py-2">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-secondary rounded-2 py-2" href="{% url 'product-list' %}">
+                <span>
+                    <i class="fa-solid fa-angle-left"></i>
+                </span>
+                <span class="text-nowrap">Voltar</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- main data -->
+    <div class="border rounded-2 p-3" style="background-color: var(--neutral50);">
+        <div class="row g-3">
+            <div class="col-lg-3">
+                <label for="id_bar_code" class="form-label text-nowrap">
+                    Código de barras
+                </label>
+                <input type="text" name="bar_code" value={{ object.bar_code }} class="form-control" id="id_bar_code" readonly>
+            </div>
+            <div class="col-lg-9">
+                
+                <label for="id_name" class="form-label text-nowrap">
+                    Nome
+                </label>
+                <input type="text" name="name" value={{ object.name }} class="form-control" id="id_name" readonly>
+            </div>
+
+            <div class="col-lg-6">
+                <label for="id_manufacturer" class="form-label text-nowrap">
+                    Fabricante
+                </label>
+                <input type="text" name="manufacturer" value={{ object.manufacturer }} class="form-control" id="id_manufacturer" readonly>
+            </div>
+            <div class="col-lg-6">
+                
+                <label for="id_manufacturer_code" class="form-label text-nowrap">
+                    Código do fabricante
+                </label>
+                <input type="text" name="manufacturer_code" value={{ object.manufacturer_code }} class="form-control" id="id_manufacturer_code" readonly>
+            </div>
+
+            <div class="col-lg-4">
+                <label for="id_unit_type" class="form-label text-nowrap">
+                    Tipo de unidade
+                </label>
+                <input type="text" name="unit_type" value={{ object.unit_type }} class="form-control" id="id_unit_type" readonly>
+            </div>
+            <div class="col-lg-4">
+                <label for="id_amount" class="form-label text-nowrap">
+                    Quantidade
+                </label>
+                <input type="number" name="amount" value={{ object.amount }} class="form-control" id="id_amount" readonly>
+            </div>
+            <div class="col-lg-4">
+                <label for="id_unit_price" class="form-label text-nowrap">
+                    Preço unitário
+                </label>
+                <input type="number" name="unit_price" value="1.00" class="form-control" id="id_unit_price" readonly>
+            </div>
+        </div>
     </div>
 {% endblock %}
