@@ -7,7 +7,13 @@
 
 {% block content %}
     <!-- title -->
-    <h3>Detalhes do produto</h3>
+    <div class="d-flex flex-row justify-content-between align-items-center">
+        <h3 style="margin-bottom: 0px;">Detalhes do produto</h3>
+        <a class="btn btn-secondary rounded-2 py-2" href="{% url 'product-list' %}">
+            <span><i class="fa-solid fa-angle-left"></i></span>
+            <span class="text-nowrap">Voltar</span>
+        </a>
+    </div>
 
     <!-- breadcrumb -->
     <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -20,12 +26,18 @@
 
     <!-- actions button -->
     <div class="py-2">
-        <div class="d-flex justify-content-end">
-            <a class="btn btn-secondary rounded-2 py-2" href="{% url 'product-list' %}">
-                <span>
-                    <i class="fa-solid fa-angle-left"></i>
+        <div class="d-flex justify-content-end gap-2">
+            <a href="{% url 'product-delete' product.id %}" class="btn btn-danger rounded-2 px-2 py-2">
+                <span class="d-inline-block text-center" style="width: 24px;">
+                    <i class="fa-solid fa-trash-can"></i>
                 </span>
-                <span class="text-nowrap">Voltar</span>
+                <span class="text-nowrap">Deletar</span>
+            </a>
+            <a href="{% url 'product-update' product.id %}" class="btn btn-warning rounded-2 px-2 py-2">
+                <span class="d-inline-block text-center" style="width: 24px;">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+                <span class="text-nowrap">Atualizar</span>
             </a>
         </div>
     </div>
