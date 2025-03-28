@@ -6,17 +6,69 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Deletar produto</h2>
+    <!-- title -->
+    <h3>Deletar Produto</h3>
 
-    <div class="py-2">
-        <form method="post">{% csrf_token %}
-            <p>Are you sure you want to delete "{{ object }}"?</p>
-            {{ form }}
-            <input type="submit" value="Confirm">
-        </form>
+    <!-- breadcrumb -->
+    <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb text-nowrap">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product-list' %}">Produtos</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product-detail' object.id %}">{{ object.bar_code }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Deletar</li>
+        </ol>
     </div>
 
-    <div class="d-inline-block px-3 py-2 mb-2 my-class">
-        <a href="{% url 'product-list' %}">Voltar</a>
+    <!-- main data -->
+    <div class="border rounded-2 p-3" style="background-color: var(--neutral50);">
+        <form method="post" id="delete-product">
+            {% csrf_token %} 
+            <div class="d-flex justify-content-center">
+                <p class="text-nowrap">Tem certeza que deseja deletar esse produto?</p>
+            </div>
+
+            <div class="bg-danger-subtle border rounded-2 border-danger p-3">
+                <div>
+                    <div class="d-flex flex-row justify-content-between border-bottom border-secondary pb-2 mb-2">
+                        <label for="id_bar_code" class="text-nowrap">Código de barra</label>
+                        <span id="id_bar_code" class="text-nowrap">{{ object.bar_code }}</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between border-bottom border-secondary pb-2 mb-2">
+                        <label for="id_name" class="text-nowrap">Nome</label>
+                        <span id="id_name" class="text-nowrap">{{ object.name }}</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between border-bottom border-secondary pb-2 mb-2">
+                        <label for="id_manufacturer" class="text-nowrap">Fabricante</label>
+                        <span id="id_manufacturer" class="text-nowrap">{{ object.manufacturer }}</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between border-bottom border-secondary pb-2 mb-2">
+                        <label for="id_manufacturer_code" class="text-nowrap">Código do fabricante</label>
+                        <span id="id_manufacturer_code" class="text-nowrap">{{ object.manufacturer_code }}</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <label for="id_amount" class="text-nowrap">Quantidade</label>
+                        <span id="id_amount" class="text-nowrap">{{ object.amount }} {{ object.unit_type }}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- form action buttons -->
+        <div class="mt-3">
+            <div class="d-flex justify-content-end gap-2">
+                <a class="d-block-inline btn btn-secondary rounded-2 py-2" role="button" href="{% url 'product-list' %}">
+                    <span>
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                    <span class="text-nowrap">Cancelar</span>
+                </a>
+                <button type="submit" form="delete-product" class="btn btn-danger rounded-2 py-2">
+                    <span>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                    <span class="text-nowrap">Deletar</span>
+                </button>
+            </div>
+        </div>
     </div>
 {% endblock %}
