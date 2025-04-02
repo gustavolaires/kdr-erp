@@ -7,13 +7,8 @@
 
 {% block content %}
     <!-- title -->
-    <div class="d-flex flex-row justify-content-between align-items-center">
-        <h3 style="margin-bottom: 0px;">Editar Produto</h3>
-        <a class="btn btn-secondary rounded-2 py-2" href="{% url 'product-detail' product.id %}">
-            <span><i class="fa-solid fa-angle-left"></i></span>
-            <span class="text-nowrap">Voltar</span>
-        </a>
-    </div>
+    {% url 'product-detail' product.id as return_url %}
+    {% include 'components/btn_return.html' with page_title='Editar Produto' return_url=return_url %}
 
     <!-- breadcrumb -->
     <div style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">

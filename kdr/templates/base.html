@@ -17,8 +17,8 @@
     {% endblock %}
 </head>
 
-<body class="d-flex flex-row align-items-stretch min-vh-100">
-    <aside class="collapse-aside-navbar collapse collapse-horizontal show" id="aside-navbar">
+<body class="d-flex flex-row align-items-stretch min-vh-100" onload="loadCurrentAsideNavbarState()">
+    <aside class="collapse-aside-navbar collapse collapse-horizontal" id="aside-navbar">
         <div class="aside-navbar">
             <nav class="navbar d-flex flex-column align-items-stretch py-0">
                 <div class="px-3 py-3 text-center">
@@ -72,9 +72,9 @@
         <header class="d-flex flex-row justify-content-between">
             <ul class="d-flex flex-row">
                 <li>
-                    <a class="d-block w-100 px-3 py-3" data-bs-toggle="collapse" href=".collapse-aside-navbar" role="button" aria-expanded="true" aria-controls="aside-navbar">
-                        <i class="fa-solid fa-bars fa-xl collapse-aside-navbar collapse collapse-horizontal"></i>
-                        <i class="fa-solid fa-xmark fa-xl collapse-aside-navbar collapse collapse-horizontal show"></i>
+                    <a class="d-block w-100 px-3 py-3" id="aside-navbar-button" data-bs-toggle="collapse" href=".collapse-aside-navbar" role="button" aria-expanded="false" aria-controls="aside-navbar">
+                        <i class="fa-solid fa-bars fa-xl collapse-aside-navbar collapse collapse-horizontal show" id="aside-navbar-button-icon-show"></i>
+                        <i class="fa-solid fa-xmark fa-xl collapse-aside-navbar collapse collapse-horizontal" id="aside-navbar-button-icon-hide"></i>
                     </a>
                 </li>
             </ul>
@@ -104,6 +104,7 @@
         </main>
     </section>
 
+    <script src="{% static '/js/kdr.base.js' %}"></script>
 </body>
 
 </html>
